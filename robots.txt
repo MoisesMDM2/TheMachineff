@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://moisesmdm2.github.io/TheMachineff/sitemap.xml

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TheMachineff | Generador de Diamantes (Fan Page)</title>
+  <meta name="description" content="Fan page no oficial de Free Fire: simulador de generador de diamantes con estilo neon. Comparte y navega el contenido de TheMachineff." />
+  <link rel="canonical" href="https://moisesmdm2.github.io/TheMachineff/" />
+  <meta name="theme-color" content="#0b0f1a" />
+
+  <!-- Open Graph / SEO -->
+  <meta property="og:title" content="TheMachineff | Generador de Diamantes (Fan Page)" />
+  <meta property="og:description" content="Simulador de generador de diamantes. Fan page no oficial." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://moisesmdm2.github.io/TheMachineff/" />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="apple-touch-icon" href="assets/favicon-180.png" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Google AdSense (Auto Ads preparado) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6600377778506731" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="TheMachineff">
+        <img src="assets/logo.png" alt="Logo TheMachineff" class="brand-logo" />
+        <span class="brand-name">TheMachineff</span>
+      </a>
+      <nav class="nav">
+        <a href="contacto.html" class="nav-link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Generador de Diamantes</h1>
+        <div class="divider">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="subtitle">Simulador visual para fans. No afiliado con Garena/Free Fire.</p>
+      </div>
+    </section>
+
+    <section class="generator container" aria-labelledby="selector-title">
+      <h2 id="selector-title" class="sr-only">Selecciona la cantidad de diamantes</h2>
+
+      <!-- Grid de cantidades -->
+      <div id="amountGrid" class="amount-grid" role="list">
+        <!-- Las tarjetas se inyectan por JS -->
+      </div>
+
+      <!-- Acción principal -->
+      <div class="actions">
+        <button id="btnGenerate" class="btn btn-primary" disabled>Generar</button>
+      </div>
+
+      <!-- Paso de ID de jugador (aparece tras 'Generar') -->
+      <form id="idForm" class="id-form" hidden novalidate>
+        <label for="playerId">ID de jugador</label>
+        <input id="playerId" name="playerId" type="text" inputmode="text" placeholder="Ingresa tu ID de jugador" autocomplete="off" />
+        <div class="form-actions">
+          <button id="btnSend" type="button" class="btn btn-accent" disabled>Enviar</button>
+          <button id="btnCancelId" type="button" class="btn btn-ghost">Cancelar</button>
+        </div>
+      </form>
+
+      <!-- Bloque de anuncio manual (opcional). Requiere 'data-ad-slot' real. -->
+      <!--
+      <div class="ad-wrap">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-6600377778506731"
+             data-ad-slot="REEMPLAZA_CON_TU_SLOT"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+      -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="disclaimer">
+        <strong>Aviso:</strong> Fan page no oficial. Este sitio es un simulador visual y no genera ni distribuye artículos del juego. Free Fire y sus marcas son propiedad de sus respectivos dueños.
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/themachine.ff" target="_blank" rel="noopener" aria-label="Instagram TheMachineff">
+          <img src="assets/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://www.facebook.com/share/1BfCXTo1VD/" target="_blank" rel="noopener" aria-label="Facebook TheMachineff">
+          <img src="assets/facebook.png" alt="Facebook" />
+        </a>
+        <a href="https://www.youtube.com/@TheMachineff" target="_blank" rel="noopener" aria-label="YouTube TheMachineff">
+          <img src="assets/youtube.png" alt="YouTube" />
+        </a>
+        <a href="https://wa.me/?text=Visita%20TheMachineff%20-%20https%3A%2F%2Fmoisesmdm2.github.io%2FTheMachineff%2F" target="_blank" rel="noopener" aria-label="WhatsApp TheMachineff">
+          <img src="assets/whatsapp.png" alt="WhatsApp" />
+        </a>
+      </div>
+      <small>© <span id="year"></span> TheMachineff — Fan project</small>
+    </div>
+  </footer>
+
+  <!-- Modal de resumen -->
+  <dialog id="summaryModal" class="modal">
+    <form method="dialog" class="modal-card">
+      <header class="modal-header">
+        <h3>Resumen</h3>
+        <button value="cancel" class="icon-btn" aria-label="Cerrar">✕</button>
+      </header>
+      <div class="modal-body">
+        <p><strong>Cantidad:</strong> <span id="sumAmount">—</span> diamantes</p>
+        <p><strong>ID de jugador:</strong> <span id="sumPlayer">—</span></p>
+      </div>
+      <footer class="modal-actions">
+        <button value="cancel" class="btn btn-ghost">Editar</button>
+        <button id="confirmSummary" value="confirm" class="btn btn-primary">Confirmar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <!-- Overlay de carga -->
+  <div id="loadingOverlay" class="loading-overlay" hidden>
+    <div class="loader">
+      <div class="spinner"></div>
+      <p id="loadingText">Cargando…</p>
+    </div>
+  </div>
+
+  <!-- Banner de compartir -->
+  <div id="shareBanner" class="share-banner" hidden>
+    <div class="share-card">
+      <h3>Para completar el proceso:</h3>
+      <p>Comparte este sitio</p>
+      <div class="share-actions">
+        <button id="btnShareNative" class="btn btn-accent">Compartir</button>
+        <a id="btnShareFB" class="btn btn-facebook" target="_blank" rel="noopener">Facebook</a>
+        <a id="btnShareWA" class="btn btn-whatsapp" target="_blank" rel="noopener">WhatsApp</a>
+        <button id="btnCopyLink" class="btn btn-ghost">Copiar enlace</button>
+      </div>
+      <button id="btnCloseShare" class="icon-btn close-share" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+
+  <script defer src="js/app.js"></script>
+</body>
+</html>
